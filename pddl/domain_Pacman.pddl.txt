@@ -11,7 +11,8 @@
 	;;被吃也写在这里吗
 	(:action move : parameters (?p1 ?p2) ;;move from p1 to p2
 				:precondition (and   (pacmanAt ?p)
-								(adjacent ?p1 ?p2)
+								(not (wallAt ?p))
+								;;(adjacent ?p1 ?p2)
 							)
 				:effect (and      (pacmanAt p2)
 							(not (pacmanAt p1))
