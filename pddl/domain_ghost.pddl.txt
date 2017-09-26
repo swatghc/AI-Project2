@@ -1,0 +1,23 @@
+(define (domain domain_Ghost)
+
+
+	(:predicates      (pacmanAt ?p) ;; true iff Pacman at position p
+				(ghostAt ?p)	;; true iff opposite ghost at position p
+				(adjacent ?p1 ?p2) ;; true iff p1osition1 and position2 are adjacent
+				(powered ?)	;; true iff the pacman has been powered
+	)
+	;;
+	;;被吃也写在这里吗
+	(:action move : parameters (?p1 ?p2) ;;move from p1 to p2
+				:precondition (and   (ghostAt ?p)
+								(adjacent ?p1 ?p2)
+							)
+				:effect (and      (ghostAt ?p2)
+							(not (ghostAt ?p1))
+							(when (and (pacmanAt ?p2)) 
+							           (and (not (powered)))
+									(not (pacmanAt p2))
+					   )					
+	)
+
+)
