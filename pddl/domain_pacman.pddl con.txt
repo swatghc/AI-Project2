@@ -10,16 +10,18 @@
 				(ghostAt ?p - location)	;; true iff opposite ghost at position p
 				(foodAt ?p - location)	;; true iff food at position p
 				(capsuleAt ?p - location)	;; true iff power capsule at position p
-				;;(adjacent ?p1 ?p2);; true iff position1 and position2 are adjacent
+				(connected ?p1 ?p2);; true iff position1 and position2 are adjacent
 				(powered ?)	;; true iff the pacman has been powered
-				(wall ?p - location)
+				;;(wall ?p - location)
 	)
 	;;被吃也写在这里吗
 	(:action move
 	            :parameters (?p1 ?p2 - location) ;;move from p1 to p2
 				:precondition (and   
-				                (pacmanAt ?p1)
-								(not (wall ?p2))
+				                		(pacmanAt ?p1)
+								(connected  ?p1 ?p2)
+								;;(not (wall ?p2))
+								
 						   	)
 				:effect (and      
 				            (pacmanAt ?p2)

@@ -1,278 +1,844 @@
-(define (problem ghost_red)
-	(:domain ghost)
-	(:objects 1_1 1_2 1_3 1_4 1_5 1_6 1_7 1_8 1_9 1_10 1_11 1_12 1_13 1_14 1_15 1_16 1_17 1_18 1_19 1_20 1_21 1_22 1_23 1_24 1_25 1_26 1_27 1_28 1_29 1_30 1_31 1_32 2_1 2_2 2_3 2_4 2_5 2_6 2_7 2_8 2_9 2_10 2_11 2_12 2_13 2_14 2_15 2_16 2_17 2_18 2_19 2_20 2_21 2_22 2_23 2_24 2_25 2_26 2_27 2_28 2_29 2_30 2_31 2_32 3_1 3_2 3_3 3_4 3_5 3_6 3_7 3_8 3_9 3_10 3_11 3_12 3_13 3_14 3_15 3_16 3_17 3_18 3_19 3_20 3_21 3_22 3_23 3_24 3_25 3_26 3_27 3_28 3_29 3_30 3_31 3_32 4_1 4_2 4_3 4_4 4_5 4_6 4_7 4_8 4_9 4_10 4_11 4_12 4_13 4_14 4_15 4_16 4_17 4_18 4_19 4_20 4_21 4_22 4_23 4_24 4_25 4_26 4_27 4_28 4_29 4_30 4_31 4_32 5_1 5_2 5_3 5_4 5_5 5_6 5_7 5_8 5_9 5_10 5_11 5_12 5_13 5_14 5_15 5_16 5_17 5_18 5_19 5_20 5_21 5_22 5_23 5_24 5_25 5_26 5_27 5_28 5_29 5_30 5_31 5_32 6_1 6_2 6_3 6_4 6_5 6_6 6_7 6_8 6_9 6_10 6_11 6_12 6_13 6_14 6_15 6_16 6_17 6_18 6_19 6_20 6_21 6_22 6_23 6_24 6_25 6_26 6_27 6_28 6_29 6_30 6_31 6_32 7_1 7_2 7_3 7_4 7_5 7_6 7_7 7_8 7_9 7_10 7_11 7_12 7_13 7_14 7_15 7_16 7_17 7_18 7_19 7_20 7_21 7_22 7_23 7_24 7_25 7_26 7_27 7_28 7_29 7_30 7_31 7_32 8_1 8_2 8_3 8_4 8_5 8_6 8_7 8_8 8_9 8_10 8_11 8_12 8_13 8_14 8_15 8_16 8_17 8_18 8_19 8_20 8_21 8_22 8_23 8_24 8_25 8_26 8_27 8_28 8_29 8_30 8_31 8_32 9_1 9_2 9_3 9_4 9_5 9_6 9_7 9_8 9_9 9_10 9_11 9_12 9_13 9_14 9_15 9_16 9_17 9_18 9_19 9_20 9_21 9_22 9_23 9_24 9_25 9_26 9_27 9_28 9_29 9_30 9_31 9_32 10_1 10_2 10_3 10_4 10_5 10_6 10_7 10_8 10_9 10_10 10_11 10_12 10_13 10_14 10_15 10_16 10_17 10_18 10_19 10_20 10_21 10_22 10_23 10_24 10_25 10_26 10_27 10_28 10_29 10_30 10_31 10_32 11_1 11_2 11_3 11_4 11_5 11_6 11_7 11_8 11_9 11_10 11_11 11_12 11_13 11_14 11_15 11_16 11_17 11_18 11_19 11_20 11_21 11_22 11_23 11_24 11_25 11_26 11_27 11_28 11_29 11_30 11_31 11_32 12_1 12_2 12_3 12_4 12_5 12_6 12_7 12_8 12_9 12_10 12_11 12_12 12_13 12_14 12_15 12_16 12_17 12_18 12_19 12_20 12_21 12_22 12_23 12_24 12_25 12_26 12_27 12_28 12_29 12_30 12_31 12_32 13_1 13_2 13_3 13_4 13_5 13_6 13_7 13_8 13_9 13_10 13_11 13_12 13_13 13_14 13_15 13_16 13_17 13_18 13_19 13_20 13_21 13_22 13_23 13_24 13_25 13_26 13_27 13_28 13_29 13_30 13_31 13_32 14_1 14_2 14_3 14_4 14_5 14_6 14_7 14_8 14_9 14_10 14_11 14_12 14_13 14_14 14_15 14_16 14_17 14_18 14_19 14_20 14_21 14_22 14_23 14_24 14_25 14_26 14_27 14_28 14_29 14_30 14_31 14_32 15_1 15_2 15_3 15_4 15_5 15_6 15_7 15_8 15_9 15_10 15_11 15_12 15_13 15_14 15_15 15_16 15_17 15_18 15_19 15_20 15_21 15_22 15_23 15_24 15_25 15_26 15_27 15_28 15_29 15_30 15_31 15_32 16_1 16_2 16_3 16_4 16_5 16_6 16_7 16_8 16_9 16_10 16_11 16_12 16_13 16_14 16_15 16_16 16_17 16_18 16_19 16_20 16_21 16_22 16_23 16_24 16_25 16_26 16_27 16_28 16_29 16_30 16_31 16_32 )
+(define (problem pacman_red)
+	(:domain domain_pacman)
+	(:objects 
+		loc_1_1 
+		loc_2_1 
+		loc_3_1 
+		loc_4_1 
+		loc_5_1 
+		loc_6_1 
+		loc_7_1 
+		loc_8_1 
+		loc_9_1 
+		loc_10_1 
+		loc_11_1 
+		loc_12_1 
+		loc_13_1 
+		loc_14_1 
+		loc_15_1 
+		loc_16_1 
+		loc_17_1 
+		loc_18_1 
+		loc_19_1 
+		loc_20_1 
+		loc_21_1 
+		loc_22_1 
+		loc_23_1 
+		loc_24_1 
+		loc_25_1 
+		loc_26_1 
+		loc_27_1 
+		loc_28_1 
+		loc_29_1 
+		loc_30_1 
+		loc_31_1 
+		loc_32_1 
+		loc_1_2 
+		loc_2_2 
+		loc_3_2 
+		loc_4_2 
+		loc_5_2 
+		loc_6_2 
+		loc_7_2 
+		loc_8_2 
+		loc_9_2 
+		loc_10_2 
+		loc_11_2 
+		loc_12_2 
+		loc_13_2 
+		loc_14_2 
+		loc_15_2 
+		loc_16_2 
+		loc_17_2 
+		loc_18_2 
+		loc_19_2 
+		loc_20_2 
+		loc_21_2 
+		loc_22_2 
+		loc_23_2 
+		loc_24_2 
+		loc_25_2 
+		loc_26_2 
+		loc_27_2 
+		loc_28_2 
+		loc_29_2 
+		loc_30_2 
+		loc_31_2 
+		loc_32_2 
+		loc_1_3 
+		loc_2_3 
+		loc_3_3 
+		loc_4_3 
+		loc_5_3 
+		loc_6_3 
+		loc_7_3 
+		loc_8_3 
+		loc_9_3 
+		loc_10_3 
+		loc_11_3 
+		loc_12_3 
+		loc_13_3 
+		loc_14_3 
+		loc_15_3 
+		loc_16_3 
+		loc_17_3 
+		loc_18_3 
+		loc_19_3 
+		loc_20_3 
+		loc_21_3 
+		loc_22_3 
+		loc_23_3 
+		loc_24_3 
+		loc_25_3 
+		loc_26_3 
+		loc_27_3 
+		loc_28_3 
+		loc_29_3 
+		loc_30_3 
+		loc_31_3 
+		loc_32_3 
+		loc_1_4 
+		loc_2_4 
+		loc_3_4 
+		loc_4_4 
+		loc_5_4 
+		loc_6_4 
+		loc_7_4 
+		loc_8_4 
+		loc_9_4 
+		loc_10_4 
+		loc_11_4 
+		loc_12_4 
+		loc_13_4 
+		loc_14_4 
+		loc_15_4 
+		loc_16_4 
+		loc_17_4 
+		loc_18_4 
+		loc_19_4 
+		loc_20_4 
+		loc_21_4 
+		loc_22_4 
+		loc_23_4 
+		loc_24_4 
+		loc_25_4 
+		loc_26_4 
+		loc_27_4 
+		loc_28_4 
+		loc_29_4 
+		loc_30_4 
+		loc_31_4 
+		loc_32_4 
+		loc_1_5 
+		loc_2_5 
+		loc_3_5 
+		loc_4_5 
+		loc_5_5 
+		loc_6_5 
+		loc_7_5 
+		loc_8_5 
+		loc_9_5 
+		loc_10_5 
+		loc_11_5 
+		loc_12_5 
+		loc_13_5 
+		loc_14_5 
+		loc_15_5 
+		loc_16_5 
+		loc_17_5 
+		loc_18_5 
+		loc_19_5 
+		loc_20_5 
+		loc_21_5 
+		loc_22_5 
+		loc_23_5 
+		loc_24_5 
+		loc_25_5 
+		loc_26_5 
+		loc_27_5 
+		loc_28_5 
+		loc_29_5 
+		loc_30_5 
+		loc_31_5 
+		loc_32_5 
+		loc_1_6 
+		loc_2_6 
+		loc_3_6 
+		loc_4_6 
+		loc_5_6 
+		loc_6_6 
+		loc_7_6 
+		loc_8_6 
+		loc_9_6 
+		loc_10_6 
+		loc_11_6 
+		loc_12_6 
+		loc_13_6 
+		loc_14_6 
+		loc_15_6 
+		loc_16_6 
+		loc_17_6 
+		loc_18_6 
+		loc_19_6 
+		loc_20_6 
+		loc_21_6 
+		loc_22_6 
+		loc_23_6 
+		loc_24_6 
+		loc_25_6 
+		loc_26_6 
+		loc_27_6 
+		loc_28_6 
+		loc_29_6 
+		loc_30_6 
+		loc_31_6 
+		loc_32_6 
+		loc_1_7 
+		loc_2_7 
+		loc_3_7 
+		loc_4_7 
+		loc_5_7 
+		loc_6_7 
+		loc_7_7 
+		loc_8_7 
+		loc_9_7 
+		loc_10_7 
+		loc_11_7 
+		loc_12_7 
+		loc_13_7 
+		loc_14_7 
+		loc_15_7 
+		loc_16_7 
+		loc_17_7 
+		loc_18_7 
+		loc_19_7 
+		loc_20_7 
+		loc_21_7 
+		loc_22_7 
+		loc_23_7 
+		loc_24_7 
+		loc_25_7 
+		loc_26_7 
+		loc_27_7 
+		loc_28_7 
+		loc_29_7 
+		loc_30_7 
+		loc_31_7 
+		loc_32_7 
+		loc_1_8 
+		loc_2_8 
+		loc_3_8 
+		loc_4_8 
+		loc_5_8 
+		loc_6_8 
+		loc_7_8 
+		loc_8_8 
+		loc_9_8 
+		loc_10_8 
+		loc_11_8 
+		loc_12_8 
+		loc_13_8 
+		loc_14_8 
+		loc_15_8 
+		loc_16_8 
+		loc_17_8 
+		loc_18_8 
+		loc_19_8 
+		loc_20_8 
+		loc_21_8 
+		loc_22_8 
+		loc_23_8 
+		loc_24_8 
+		loc_25_8 
+		loc_26_8 
+		loc_27_8 
+		loc_28_8 
+		loc_29_8 
+		loc_30_8 
+		loc_31_8 
+		loc_32_8 
+		loc_1_9 
+		loc_2_9 
+		loc_3_9 
+		loc_4_9 
+		loc_5_9 
+		loc_6_9 
+		loc_7_9 
+		loc_8_9 
+		loc_9_9 
+		loc_10_9 
+		loc_11_9 
+		loc_12_9 
+		loc_13_9 
+		loc_14_9 
+		loc_15_9 
+		loc_16_9 
+		loc_17_9 
+		loc_18_9 
+		loc_19_9 
+		loc_20_9 
+		loc_21_9 
+		loc_22_9 
+		loc_23_9 
+		loc_24_9 
+		loc_25_9 
+		loc_26_9 
+		loc_27_9 
+		loc_28_9 
+		loc_29_9 
+		loc_30_9 
+		loc_31_9 
+		loc_32_9 
+		loc_1_10 
+		loc_2_10 
+		loc_3_10 
+		loc_4_10 
+		loc_5_10 
+		loc_6_10 
+		loc_7_10 
+		loc_8_10 
+		loc_9_10 
+		loc_10_10 
+		loc_11_10 
+		loc_12_10 
+		loc_13_10 
+		loc_14_10 
+		loc_15_10 
+		loc_16_10 
+		loc_17_10 
+		loc_18_10 
+		loc_19_10 
+		loc_20_10 
+		loc_21_10 
+		loc_22_10 
+		loc_23_10 
+		loc_24_10 
+		loc_25_10 
+		loc_26_10 
+		loc_27_10 
+		loc_28_10 
+		loc_29_10 
+		loc_30_10 
+		loc_31_10 
+		loc_32_10 
+		loc_1_11 
+		loc_2_11 
+		loc_3_11 
+		loc_4_11 
+		loc_5_11 
+		loc_6_11 
+		loc_7_11 
+		loc_8_11 
+		loc_9_11 
+		loc_10_11 
+		loc_11_11 
+		loc_12_11 
+		loc_13_11 
+		loc_14_11 
+		loc_15_11 
+		loc_16_11 
+		loc_17_11 
+		loc_18_11 
+		loc_19_11 
+		loc_20_11 
+		loc_21_11 
+		loc_22_11 
+		loc_23_11 
+		loc_24_11 
+		loc_25_11 
+		loc_26_11 
+		loc_27_11 
+		loc_28_11 
+		loc_29_11 
+		loc_30_11 
+		loc_31_11 
+		loc_32_11 
+		loc_1_12 
+		loc_2_12 
+		loc_3_12 
+		loc_4_12 
+		loc_5_12 
+		loc_6_12 
+		loc_7_12 
+		loc_8_12 
+		loc_9_12 
+		loc_10_12 
+		loc_11_12 
+		loc_12_12 
+		loc_13_12 
+		loc_14_12 
+		loc_15_12 
+		loc_16_12 
+		loc_17_12 
+		loc_18_12 
+		loc_19_12 
+		loc_20_12 
+		loc_21_12 
+		loc_22_12 
+		loc_23_12 
+		loc_24_12 
+		loc_25_12 
+		loc_26_12 
+		loc_27_12 
+		loc_28_12 
+		loc_29_12 
+		loc_30_12 
+		loc_31_12 
+		loc_32_12 
+		loc_1_13 
+		loc_2_13 
+		loc_3_13 
+		loc_4_13 
+		loc_5_13 
+		loc_6_13 
+		loc_7_13 
+		loc_8_13 
+		loc_9_13 
+		loc_10_13 
+		loc_11_13 
+		loc_12_13 
+		loc_13_13 
+		loc_14_13 
+		loc_15_13 
+		loc_16_13 
+		loc_17_13 
+		loc_18_13 
+		loc_19_13 
+		loc_20_13 
+		loc_21_13 
+		loc_22_13 
+		loc_23_13 
+		loc_24_13 
+		loc_25_13 
+		loc_26_13 
+		loc_27_13 
+		loc_28_13 
+		loc_29_13 
+		loc_30_13 
+		loc_31_13 
+		loc_32_13 
+		loc_1_14 
+		loc_2_14 
+		loc_3_14 
+		loc_4_14 
+		loc_5_14 
+		loc_6_14 
+		loc_7_14 
+		loc_8_14 
+		loc_9_14 
+		loc_10_14 
+		loc_11_14 
+		loc_12_14 
+		loc_13_14 
+		loc_14_14 
+		loc_15_14 
+		loc_16_14 
+		loc_17_14 
+		loc_18_14 
+		loc_19_14 
+		loc_20_14 
+		loc_21_14 
+		loc_22_14 
+		loc_23_14 
+		loc_24_14 
+		loc_25_14 
+		loc_26_14 
+		loc_27_14 
+		loc_28_14 
+		loc_29_14 
+		loc_30_14 
+		loc_31_14 
+		loc_32_14 
+		loc_1_15 
+		loc_2_15 
+		loc_3_15 
+		loc_4_15 
+		loc_5_15 
+		loc_6_15 
+		loc_7_15 
+		loc_8_15 
+		loc_9_15 
+		loc_10_15 
+		loc_11_15 
+		loc_12_15 
+		loc_13_15 
+		loc_14_15 
+		loc_15_15 
+		loc_16_15 
+		loc_17_15 
+		loc_18_15 
+		loc_19_15 
+		loc_20_15 
+		loc_21_15 
+		loc_22_15 
+		loc_23_15 
+		loc_24_15 
+		loc_25_15 
+		loc_26_15 
+		loc_27_15 
+		loc_28_15 
+		loc_29_15 
+		loc_30_15 
+		loc_31_15 
+		loc_32_15 
+		loc_1_16 
+		loc_2_16 
+		loc_3_16 
+		loc_4_16 
+		loc_5_16 
+		loc_6_16 
+		loc_7_16 
+		loc_8_16 
+		loc_9_16 
+		loc_10_16 
+		loc_11_16 
+		loc_12_16 
+		loc_13_16 
+		loc_14_16 
+		loc_15_16 
+		loc_16_16 
+		loc_17_16 
+		loc_18_16 
+		loc_19_16 
+		loc_20_16 
+		loc_21_16 
+		loc_22_16 
+		loc_23_16 
+		loc_24_16 
+		loc_25_16 
+		loc_26_16 
+		loc_27_16 
+		loc_28_16 
+		loc_29_16 
+		loc_30_16 
+		loc_31_16 
+		loc_32_16 
+	    - location
+	)
 	(:init
-		(wall 1_1)
-		(wall 2_1)
-		(wall 3_1)
-		(wall 4_1)
-		(wall 5_1)
-		(wall 6_1)
-		(wall 7_1)
-		(wall 8_1)
-		(wall 9_1)
-		(wall 10_1)
-		(wall 11_1)
-		(wall 12_1)
-		(wall 13_1)
-		(wall 14_1)
-		(wall 15_1)
-		(wall 16_1)
-		(wall 17_1)
-		(wall 18_1)
-		(wall 19_1)
-		(wall 20_1)
-		(wall 21_1)
-		(wall 22_1)
-		(wall 23_1)
-		(wall 24_1)
-		(wall 25_1)
-		(wall 26_1)
-		(wall 27_1)
-		(wall 28_1)
-		(wall 29_1)
-		(wall 30_1)
-		(wall 31_1)
-		(wall 32_1)
-		(wall 1_2)
-		(wall 5_2)
-		(wall 8_2)
-		(wall 10_2)
-		(wall 12_2)
-		(wall 20_2)
-		(wall 26_2)
-		(wall 28_2)
-		(wall 30_2)
-		(wall 32_2)
-		(wall 1_3)
-		(wall 3_3)
-		(wall 5_3)
-		(wall 6_3)
-		(wall 14_3)
-		(wall 15_3)
-		(wall 18_3)
-		(wall 22_3)
-		(wall 23_3)
-		(wall 24_3)
-		(wall 28_3)
-		(wall 30_3)
-		(wall 32_3)
-		(wall 1_4)
-		(wall 3_4)
-		(wall 5_4)
-		(wall 8_4)
-		(wall 10_4)
-		(wall 11_4)
-		(wall 12_4)
-		(wall 17_4)
-		(wall 18_4)
-		(wall 19_4)
-		(wall 20_4)
-		(wall 23_4)
-		(wall 26_4)
-		(wall 28_4)
-		(wall 30_4)
-		(wall 32_4)
-		(wall 1_5)
-		(wall 3_5)
-		(wall 5_5)
-		(wall 6_5)
-		(wall 8_5)
-		(wall 12_5)
-		(wall 14_5)
-		(wall 18_5)
-		(wall 22_5)
-		(wall 23_5)
-		(wall 24_5)
-		(wall 25_5)
-		(wall 26_5)
-		(wall 28_5)
-		(wall 30_5)
-		(wall 32_5)
-		(wall 1_6)
-		(wall 3_6)
-		(wall 8_6)
-		(wall 9_6)
-		(wall 10_6)
-		(wall 11_6)
-		(wall 12_6)
-		(wall 14_6)
-		(wall 15_6)
-		(wall 16_6)
-		(wall 20_6)
-		(wall 21_6)
-		(wall 22_6)
-		(wall 24_6)
-		(wall 28_6)
-		(wall 30_6)
-		(wall 32_6)
-		(wall 1_7)
-		(wall 3_7)
-		(wall 4_7)
-		(wall 6_7)
-		(wall 10_7)
-		(wall 14_7)
-		(wall 16_7)
-		(wall 17_7)
-		(wall 18_7)
-		(wall 26_7)
-		(wall 30_7)
-		(wall 32_7)
-		(wall 1_8)
-		(wall 3_8)
-		(wall 6_8)
-		(wall 7_8)
-		(wall 9_8)
-		(wall 10_8)
-		(wall 11_8)
-		(wall 12_8)
-		(wall 21_8)
-		(wall 23_8)
-		(wall 24_8)
-		(wall 25_8)
-		(wall 26_8)
-		(wall 29_8)
-		(wall 30_8)
-		(wall 32_8)
-		(wall 1_9)
-		(wall 3_9)
-		(wall 4_9)
-		(wall 7_9)
-		(wall 8_9)
-		(wall 9_9)
-		(wall 10_9)
-		(wall 12_9)
-		(wall 21_9)
-		(wall 22_9)
-		(wall 23_9)
-		(wall 24_9)
-		(wall 26_9)
-		(wall 27_9)
-		(wall 30_9)
-		(wall 32_9)
-		(wall 1_10)
-		(wall 3_10)
-		(wall 7_10)
-		(wall 15_10)
-		(wall 16_10)
-		(wall 17_10)
-		(wall 19_10)
-		(wall 23_10)
-		(wall 27_10)
-		(wall 29_10)
-		(wall 30_10)
-		(wall 32_10)
-		(wall 1_11)
-		(wall 3_11)
-		(wall 5_11)
-		(wall 9_11)
-		(wall 11_11)
-		(wall 12_11)
-		(wall 13_11)
-		(wall 17_11)
-		(wall 18_11)
-		(wall 19_11)
-		(wall 21_11)
-		(wall 22_11)
-		(wall 23_11)
-		(wall 24_11)
-		(wall 25_11)
-		(wall 30_11)
-		(wall 32_11)
-		(wall 1_12)
-		(wall 3_12)
-		(wall 5_12)
-		(wall 7_12)
-		(wall 8_12)
-		(wall 9_12)
-		(wall 10_12)
-		(wall 11_12)
-		(wall 15_12)
-		(wall 19_12)
-		(wall 21_12)
-		(wall 25_12)
-		(wall 27_12)
-		(wall 28_12)
-		(wall 30_12)
-		(wall 32_12)
-		(wall 1_13)
-		(wall 3_13)
-		(wall 5_13)
-		(wall 7_13)
-		(wall 10_13)
-		(wall 13_13)
-		(wall 14_13)
-		(wall 15_13)
-		(wall 16_13)
-		(wall 21_13)
-		(wall 22_13)
-		(wall 23_13)
-		(wall 25_13)
-		(wall 28_13)
-		(wall 30_13)
-		(wall 32_13)
-		(wall 1_14)
-		(wall 3_14)
-		(wall 5_14)
-		(wall 9_14)
-		(wall 10_14)
-		(wall 11_14)
-		(wall 15_14)
-		(wall 18_14)
-		(wall 19_14)
-		(wall 27_14)
-		(wall 28_14)
-		(wall 30_14)
-		(wall 32_14)
-		(wall 1_15)
-		(wall 3_15)
-		(wall 5_15)
-		(wall 7_15)
-		(wall 13_15)
-		(wall 21_15)
-		(wall 23_15)
-		(wall 25_15)
-		(wall 28_15)
-		(wall 32_15)
-		(wall 1_16)
-		(wall 2_16)
-		(wall 3_16)
-		(wall 4_16)
-		(wall 5_16)
-		(wall 6_16)
-		(wall 7_16)
-		(wall 8_16)
-		(wall 9_16)
-		(wall 10_16)
-		(wall 11_16)
-		(wall 12_16)
-		(wall 13_16)
-		(wall 14_16)
-		(wall 15_16)
-		(wall 16_16)
-		(wall 17_16)
-		(wall 18_16)
-		(wall 19_16)
-		(wall 20_16)
-		(wall 21_16)
-		(wall 22_16)
-		(wall 23_16)
-		(wall 24_16)
-		(wall 25_16)
-		(wall 26_16)
-		(wall 27_16)
-		(wall 28_16)
-		(wall 29_16)
-		(wall 30_16)
-		(wall 31_16)
-		(wall 32_16)
+		(wall loc_1_1)
+		(wall loc_2_1)
+		(wall loc_3_1)
+		(wall loc_4_1)
+		(wall loc_5_1)
+		(wall loc_6_1)
+		(wall loc_7_1)
+		(wall loc_8_1)
+		(wall loc_9_1)
+		(wall loc_10_1)
+		(wall loc_11_1)
+		(wall loc_12_1)
+		(wall loc_13_1)
+		(wall loc_14_1)
+		(wall loc_15_1)
+		(wall loc_16_1)
+		(wall loc_17_1)
+		(wall loc_18_1)
+		(wall loc_19_1)
+		(wall loc_20_1)
+		(wall loc_21_1)
+		(wall loc_22_1)
+		(wall loc_23_1)
+		(wall loc_24_1)
+		(wall loc_25_1)
+		(wall loc_26_1)
+		(wall loc_27_1)
+		(wall loc_28_1)
+		(wall loc_29_1)
+		(wall loc_30_1)
+		(wall loc_31_1)
+		(wall loc_32_1)
+		(wall loc_1_2)
+		(wall loc_5_2)
+		(wall loc_8_2)
+		(wall loc_10_2)
+		(wall loc_12_2)
+		(wall loc_20_2)
+		(wall loc_26_2)
+		(wall loc_28_2)
+		(wall loc_30_2)
+		(wall loc_32_2)
+		(wall loc_1_3)
+		(wall loc_3_3)
+		(wall loc_5_3)
+		(wall loc_6_3)
+		(wall loc_14_3)
+		(wall loc_15_3)
+		(wall loc_18_3)
+		(wall loc_22_3)
+		(wall loc_23_3)
+		(wall loc_24_3)
+		(wall loc_28_3)
+		(wall loc_30_3)
+		(wall loc_32_3)
+		(wall loc_1_4)
+		(wall loc_3_4)
+		(wall loc_5_4)
+		(wall loc_8_4)
+		(wall loc_10_4)
+		(wall loc_11_4)
+		(wall loc_12_4)
+		(wall loc_17_4)
+		(wall loc_18_4)
+		(wall loc_19_4)
+		(wall loc_20_4)
+		(wall loc_23_4)
+		(wall loc_26_4)
+		(wall loc_28_4)
+		(wall loc_30_4)
+		(wall loc_32_4)
+		(wall loc_1_5)
+		(wall loc_3_5)
+		(wall loc_5_5)
+		(wall loc_6_5)
+		(wall loc_8_5)
+		(wall loc_12_5)
+		(wall loc_14_5)
+		(wall loc_18_5)
+		(wall loc_22_5)
+		(wall loc_23_5)
+		(wall loc_24_5)
+		(wall loc_25_5)
+		(wall loc_26_5)
+		(wall loc_28_5)
+		(wall loc_30_5)
+		(wall loc_32_5)
+		(wall loc_1_6)
+		(wall loc_3_6)
+		(wall loc_8_6)
+		(wall loc_9_6)
+		(wall loc_10_6)
+		(wall loc_11_6)
+		(wall loc_12_6)
+		(wall loc_14_6)
+		(wall loc_15_6)
+		(wall loc_16_6)
+		(wall loc_20_6)
+		(wall loc_21_6)
+		(wall loc_22_6)
+		(wall loc_24_6)
+		(wall loc_28_6)
+		(wall loc_30_6)
+		(wall loc_32_6)
+		(wall loc_1_7)
+		(wall loc_3_7)
+		(wall loc_4_7)
+		(wall loc_6_7)
+		(wall loc_10_7)
+		(wall loc_14_7)
+		(wall loc_16_7)
+		(wall loc_17_7)
+		(wall loc_18_7)
+		(wall loc_26_7)
+		(wall loc_30_7)
+		(wall loc_32_7)
+		(wall loc_1_8)
+		(wall loc_3_8)
+		(wall loc_6_8)
+		(wall loc_7_8)
+		(wall loc_9_8)
+		(wall loc_10_8)
+		(wall loc_11_8)
+		(wall loc_12_8)
+		(wall loc_21_8)
+		(wall loc_23_8)
+		(wall loc_24_8)
+		(wall loc_25_8)
+		(wall loc_26_8)
+		(wall loc_29_8)
+		(wall loc_30_8)
+		(wall loc_32_8)
+		(wall loc_1_9)
+		(wall loc_3_9)
+		(wall loc_4_9)
+		(wall loc_7_9)
+		(wall loc_8_9)
+		(wall loc_9_9)
+		(wall loc_10_9)
+		(wall loc_12_9)
+		(wall loc_21_9)
+		(wall loc_22_9)
+		(wall loc_23_9)
+		(wall loc_24_9)
+		(wall loc_26_9)
+		(wall loc_27_9)
+		(wall loc_30_9)
+		(wall loc_32_9)
+		(wall loc_1_10)
+		(wall loc_3_10)
+		(wall loc_7_10)
+		(wall loc_15_10)
+		(wall loc_16_10)
+		(wall loc_17_10)
+		(wall loc_19_10)
+		(wall loc_23_10)
+		(wall loc_27_10)
+		(wall loc_29_10)
+		(wall loc_30_10)
+		(wall loc_32_10)
+		(wall loc_1_11)
+		(wall loc_3_11)
+		(wall loc_5_11)
+		(wall loc_9_11)
+		(wall loc_11_11)
+		(wall loc_12_11)
+		(wall loc_13_11)
+		(wall loc_17_11)
+		(wall loc_18_11)
+		(wall loc_19_11)
+		(wall loc_21_11)
+		(wall loc_22_11)
+		(wall loc_23_11)
+		(wall loc_24_11)
+		(wall loc_25_11)
+		(wall loc_30_11)
+		(wall loc_32_11)
+		(wall loc_1_12)
+		(wall loc_3_12)
+		(wall loc_5_12)
+		(wall loc_7_12)
+		(wall loc_8_12)
+		(wall loc_9_12)
+		(wall loc_10_12)
+		(wall loc_11_12)
+		(wall loc_15_12)
+		(wall loc_19_12)
+		(wall loc_21_12)
+		(wall loc_25_12)
+		(wall loc_27_12)
+		(wall loc_28_12)
+		(wall loc_30_12)
+		(wall loc_32_12)
+		(wall loc_1_13)
+		(wall loc_3_13)
+		(wall loc_5_13)
+		(wall loc_7_13)
+		(wall loc_10_13)
+		(wall loc_13_13)
+		(wall loc_14_13)
+		(wall loc_15_13)
+		(wall loc_16_13)
+		(wall loc_21_13)
+		(wall loc_22_13)
+		(wall loc_23_13)
+		(wall loc_25_13)
+		(wall loc_28_13)
+		(wall loc_30_13)
+		(wall loc_32_13)
+		(wall loc_1_14)
+		(wall loc_3_14)
+		(wall loc_5_14)
+		(wall loc_9_14)
+		(wall loc_10_14)
+		(wall loc_11_14)
+		(wall loc_15_14)
+		(wall loc_18_14)
+		(wall loc_19_14)
+		(wall loc_27_14)
+		(wall loc_28_14)
+		(wall loc_30_14)
+		(wall loc_32_14)
+		(wall loc_1_15)
+		(wall loc_3_15)
+		(wall loc_5_15)
+		(wall loc_7_15)
+		(wall loc_13_15)
+		(wall loc_21_15)
+		(wall loc_23_15)
+		(wall loc_25_15)
+		(wall loc_28_15)
+		(wall loc_32_15)
+		(wall loc_1_16)
+		(wall loc_2_16)
+		(wall loc_3_16)
+		(wall loc_4_16)
+		(wall loc_5_16)
+		(wall loc_6_16)
+		(wall loc_7_16)
+		(wall loc_8_16)
+		(wall loc_9_16)
+		(wall loc_10_16)
+		(wall loc_11_16)
+		(wall loc_12_16)
+		(wall loc_13_16)
+		(wall loc_14_16)
+		(wall loc_15_16)
+		(wall loc_16_16)
+		(wall loc_17_16)
+		(wall loc_18_16)
+		(wall loc_19_16)
+		(wall loc_20_16)
+		(wall loc_21_16)
+		(wall loc_22_16)
+		(wall loc_23_16)
+		(wall loc_24_16)
+		(wall loc_25_16)
+		(wall loc_26_16)
+		(wall loc_27_16)
+		(wall loc_28_16)
+		(wall loc_29_16)
+		(wall loc_30_16)
+		(wall loc_31_16)
+		(wall loc_32_16)
+
+
+
+		(foodAt loc_27_2)
+		(foodAt loc_29_2)
+		(foodAt loc_29_3)
+		(foodAt loc_22_4)
+		(foodAt loc_24_4)
+		(foodAt loc_25_4)
+		(foodAt loc_23_6)
+		(foodAt loc_22_8)
+		(foodAt loc_25_9)
+		(foodAt loc_29_9)
+		(foodAt loc_18_10)
+		(foodAt loc_22_10)
+		(foodAt loc_24_10)
+		(foodAt loc_25_10)
+		(foodAt loc_22_12)
+		(foodAt loc_23_12)
+		(foodAt loc_27_13)
+		(foodAt loc_22_15)
+		(foodAt loc_24_15)
+		(foodAt loc_27_15)
 
 	
-		(ghostAt 2_15)
-		(pacmanAt 31_3)
+		(pacmanAt loc_2_14)
+		
+		;;(capsuleAt loc_26_6)
+		
+		;;capsuleAt??
+		;;ghostAt??	
 		
 	)
 
 	(:goal
-		(not (pacmanAt 31_3))
-	))
+		(and
+			(not (foodAt loc_27_2))
+			(not (foodAt loc_29_2))
+			(not (foodAt loc_29_3))
+			(not (foodAt loc_22_4))
+			(not (foodAt loc_24_4))
+			(not (foodAt loc_25_4))
+			(not (foodAt loc_23_6))
+			(not (foodAt loc_22_8))
+			(not (foodAt loc_25_9))
+			(not (foodAt loc_29_9))
+			(not (foodAt loc_18_10))
+			(not (foodAt loc_22_10))
+			(not (foodAt loc_24_10))
+			(not (foodAt loc_25_10))
+			(not (foodAt loc_22_12))
+			(not (foodAt loc_23_12))
+			(not (foodAt loc_27_13))
+			(not (foodAt loc_22_15))
+			(not (foodAt loc_24_15))
+			(not (foodAt loc_27_15))
+			;;how to return to home???
+
+		)
+	)
+
+)
