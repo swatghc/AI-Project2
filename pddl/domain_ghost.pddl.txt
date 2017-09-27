@@ -10,8 +10,8 @@
 	;;
 	;;被吃也写在这里吗
 	(:action move : parameters (?p1 ?p2) ;;move from p1 to p2
-				:precondition (and   (ghostAt ?p)
-								(not (wallAt ?p))
+				:precondition (and   (ghostAt ?p1)
+								(not (wall ?p))
 								;;(adjacent ?p1 ?p2)
 							)
 				:effect (and      (ghostAt ?p2)
