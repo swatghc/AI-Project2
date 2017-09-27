@@ -1,24 +1,31 @@
 (define (domain domain_pacman)
 
+	
+	(:requirements :typing )
 
-	(:predicates      (pacmanAt ?p) ;; true iff Pacman at position p
-				(ghostAt ?p)	;; true iff opposite ghost at position p
-				(foodAt ?p)	;; true iff food at position p
-				(capsuleAt ?p)	;; true iff power capsule at position p
-				(adjacent ?p1 ?p2);; true iff position1 and position2 are adjacent
+	(:types location)
+
+	(:predicates      
+	            (pacmanAt ?p -location) ;; true iff Pacman at position p
+				(ghostAt ?p -location)	;; true iff opposite ghost at position p
+				(foodAt ?p -location)	;; true iff food at position p
+				(capsuleAt ?p -location)	;; true iff power capsule at position p
+				;;(adjacent ?p1 ?p2);; true iff position1 and position2 are adjacent
 				(powered ?)	;; true iff the pacman has been powered
-	;;
+				(wall ?p -location)
+	)
 	;;被吃也写在这里吗
-	(:action move : parameters (?p1 ?p2) ;;move from p1 to p2
+	(:action move
+	            :parameters (?p1 ?p2 -location) ;;move from p1 to p2
 				:precondition (and   (pacmanAt ?p1)
 								(not (wall ?p2))
 								;;(adjacent ?p1 ?p2)
 							)
-				:effect (and      (pacmanAt p2)
-							(not (pacmanAt p1))
-							(not (foodAt p2))
-							(not capsuleAt p2)
-							(when (powered) (not ghostAt p2))
+				:effect (and      (pacmanAt ?p2)
+							(not (pacmanAt ?p1))
+							(not (foodAt ?p2))
+							(not (capsuleAt ?p2))
+							(when (powered) (not (ghostAt ?p2)))
 					   )					
 	)
 
