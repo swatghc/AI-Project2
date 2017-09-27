@@ -1,4 +1,4 @@
-(define (domain domain_Pacman)
+(define (domain domain_pacman)
 
 
 	(:predicates      (pacmanAt ?p) ;; true iff Pacman at position p
