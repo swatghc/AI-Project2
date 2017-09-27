@@ -1,4 +1,4 @@
-(define (problem ghost_red)
+(define (problem ghost_blue)
 	(:domain domain_ghost)
 	(:objects 
 		loc_1_1 
@@ -1062,11 +1062,11 @@
 		(connected loc_31_15 loc_30_15)
 
 	
-		(ghostAt loc_2_15)
-		(pacmanAt loc_31_3)
+		(ghostAt loc_31_2)
+		(pacmanAt loc_2_14)
 		
 	)
 
 	(:goal
-		(not (pacmanAt loc_31_3))
+		(not (pacmanAt loc_2_14))
 	))
