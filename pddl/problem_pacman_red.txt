@@ -1,5 +1,5 @@
-(define (problem ghost_red)
-	(:domain domain_ghost)
+(define (problem pacman_red)
+	(:domain domain_pacman)
 	(:objects 
 		loc_1_1 
 		loc_2_1 
@@ -1061,12 +1061,66 @@
 		(connected loc_30_15 loc_31_15)
 		(connected loc_31_15 loc_30_15)
 
+
+
+
+
+		(foodAt loc_27_2)
+		(foodAt loc_29_2)
+		(foodAt loc_29_3)
+		(foodAt loc_22_4)
+		(foodAt loc_24_4)
+		(foodAt loc_25_4)
+		(foodAt loc_23_6)
+		(foodAt loc_22_8)
+		(foodAt loc_25_9)
+		(foodAt loc_29_9)
+		(foodAt loc_18_10)
+		(foodAt loc_22_10)
+		(foodAt loc_24_10)
+		(foodAt loc_25_10)
+		(foodAt loc_22_12)
+		(foodAt loc_23_12)
+		(foodAt loc_27_13)
+		(foodAt loc_22_15)
+		(foodAt loc_24_15)
+		(foodAt loc_27_15)
+
 	
-		(ghostAt loc_2_15)
-		(pacmanAt loc_31_3)
+		(pacmanAt loc_2_14)
+		
+		;;(capsuleAt loc_26_6)
+		
+		;;capsuleAt??
+		;;ghostAt??	
 		
 	)
 
 	(:goal
-		(not (pacmanAt loc_31_3))
-	))
+		(and
+			(not (foodAt loc_27_2))
+			(not (foodAt loc_29_2))
+			(not (foodAt loc_29_3))
+			(not (foodAt loc_22_4))
+			(not (foodAt loc_24_4))
+			(not (foodAt loc_25_4))
+			(not (foodAt loc_23_6))
+			(not (foodAt loc_22_8))
+			(not (foodAt loc_25_9))
+			(not (foodAt loc_29_9))
+			(not (foodAt loc_18_10))
+			(not (foodAt loc_22_10))
+			(not (foodAt loc_24_10))
+			(not (foodAt loc_25_10))
+			(not (foodAt loc_22_12))
+			(not (foodAt loc_23_12))
+			(not (foodAt loc_27_13))
+			(not (foodAt loc_22_15))
+			(not (foodAt loc_24_15))
+			(not (foodAt loc_27_15))
+			;;how to return to home???
+
+		)
+	)
+
+)
