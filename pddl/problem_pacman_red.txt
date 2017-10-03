@@ -1088,11 +1088,9 @@
 
 	
 		(pacmanAt loc_2_14)
+		(ghostAt loc_31_2)
+		(capsuleAt loc_26_6)
 		
-		;;(capsuleAt loc_26_6)
-		
-		;;capsuleAt??
-		;;ghostAt??	
 		
 	)
 
@@ -1118,7 +1116,26 @@
 			(not (foodAt loc_22_15))
 			(not (foodAt loc_24_15))
 			(not (foodAt loc_27_15))
-			;;how to return to home???
+			(or
+				(pacmanAt loc_16_1)
+				(pacmanAt loc_16_2)
+				(pacmanAt loc_16_3)
+				(pacmanAt loc_16_4)
+				(pacmanAt loc_16_5)
+				(pacmanAt loc_16_6)
+				(pacmanAt loc_16_7)
+				(pacmanAt loc_16_8)
+				(pacmanAt loc_16_9)
+				(pacmanAt loc_16_10)
+				(pacmanAt loc_16_11)
+				(pacmanAt loc_16_12)
+				(pacmanAt loc_16_13)
+				(pacmanAt loc_16_14)
+				(pacmanAt loc_16_15)
+				(pacmanAt loc_16_16)
+			)
+
+			(not (pacmanAt loc_31_2))
 
 		)
 	)

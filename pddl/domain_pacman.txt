@@ -13,7 +13,7 @@
 				(connected ?p1 ?p2);; true iff position1 and position2 are connected
 				(powered ?)	;; true iff the pacman has been powered
 	)
-	;;被吃也写在这里吗
+
 	(:action move
 	            :parameters (?p1 ?p2 - location) ;;move from p1 to p2
 				:precondition (and   
@@ -24,7 +24,8 @@
 				            (pacmanAt ?p2)
 							(not (pacmanAt ?p1))
 							(not (foodAt ?p2))
-							;;(not (capsuleAt ?p2))
+							(when (capsuleAt ?p2) (powered))
+							(not (capsuleAt ?p2))
 							(when (powered) (not (ghostAt ?p2)))
 					   )					
 	)
