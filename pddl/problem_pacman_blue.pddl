@@ -1,5 +1,7 @@
-(define (problem ghost_red)
-	(:domain domain_ghost)
+﻿;;Scenario&Assumption: The map used is the default map. In each team, there is a offensive pacman that concentrates on eating dots, and a defensive ghost that never across the middle line. The pacman on the blue side is not powered, the pacman intends to eat all the dots on the opposite side, avoiding the ghost at the same time, then return to home.
+
+(define (problem pacman_blue)
+	(:domain domain_pacman)
 	(:objects 
 		loc_1_1 
 		loc_2_1 
@@ -1061,12 +1063,86 @@
 		(connected loc_30_15 loc_31_15)
 		(connected loc_31_15 loc_30_15)
 
+
+
+
+
+		(foodAt loc_6_2)
+		(foodAt loc_9_2)
+		(foodAt loc_11_2)
+		(foodAt loc_6_4)
+		(foodAt loc_10_5)
+		(foodAt loc_11_5)
+		(foodAt loc_8_7)
+		(foodAt loc_9_7)
+		(foodAt loc_11_7)
+		(foodAt loc_15_7)
+		(foodAt loc_4_8)
+		(foodAt loc_8_8)
+		(foodAt loc_11_9)
+		(foodAt loc_10_11)
+		(foodAt loc_8_13)
+		(foodAt loc_9_13)
+		(foodAt loc_11_13)
+		(foodAt loc_4_14)
+		(foodAt loc_4_15)
+		(foodAt loc_6_15)
+
+
+
 	
-		(ghostAt loc_2_15)
 		(pacmanAt loc_31_3)
+		(ghostAt loc_2_15)
+		(capsuleAt loc_7_11)
+		;;(not (powered))
 		
 	)
 
 	(:goal
-		(not (pacmanAt loc_31_3))
-	))
+		(and
+			(not (foodAt loc_6_2))
+			(not (foodAt loc_9_2))
+			(not (foodAt loc_11_2))
+			(not (foodAt loc_6_4))
+			(not (foodAt loc_10_5))
+			(not (foodAt loc_11_5))
+			(not (foodAt loc_8_7))
+			(not (foodAt loc_9_7))
+			(not (foodAt loc_11_7))
+			(not (foodAt loc_15_7))
+			(not (foodAt loc_4_8))
+			(not (foodAt loc_8_8))
+			(not (foodAt loc_11_9))
+			(not (foodAt loc_10_11))
+			(not (foodAt loc_8_13))
+			(not (foodAt loc_9_13))
+			(not (foodAt loc_11_13))
+			(not (foodAt loc_4_14))
+			(not (foodAt loc_4_15))
+			(not (foodAt loc_6_15))
+
+			(or
+				(pacmanAt loc_17_1)
+				(pacmanAt loc_17_2)
+				(pacmanAt loc_17_3)
+				(pacmanAt loc_17_4)
+				(pacmanAt loc_17_5)
+				(pacmanAt loc_17_6)
+				(pacmanAt loc_17_7)
+				(pacmanAt loc_17_8)
+				(pacmanAt loc_17_9)
+				(pacmanAt loc_17_10)
+				(pacmanAt loc_17_11)
+				(pacmanAt loc_17_12)
+				(pacmanAt loc_17_13)
+				(pacmanAt loc_17_14)
+				(pacmanAt loc_17_15)
+				(pacmanAt loc_17_16)
+			)
+
+				(not (pacmanAt loc_2_15))
+
+		)
+	)
+
+)

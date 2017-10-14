@@ -1,4 +1,7 @@
-(define (problem ghost_red)
+
+
+(define (problem problem_ghost_red_scared)
+	;;Scenario&Assumption: In each team, there is a offensive pacman that concentrates on eating dots, and a defensive ghost that never across the middle line. in this problem, the ghost is scared. Then ghost concentrates on avoiding opposite pacman in a time slot, then begin to seek for pacman again.
 	(:domain domain_ghost)
 	(:objects 
 		loc_1_1 
@@ -514,8 +517,32 @@
 		loc_31_16 
 		loc_32_16 
 	    - location
+
+		n1
+		n2
+		n3
+		n4
+		n5
+		n6
+		n7
+		n8
+		n9
+		n10
+		- number
+
 	)
 	(:init
+
+		(successor n1 n2)
+		(successor n2 n3)
+		(successor n3 n4)
+		(successor n4 n5)
+		(successor n5 n6)
+		(successor n6 n7)
+		(successor n7 n8)
+		(successor n8 n9)
+		(successor n9 n10)
+		
 		(connected loc_2_2 loc_2_3)
 		(connected loc_2_3 loc_2_2)
 		(connected loc_2_3 loc_2_4)
@@ -1063,10 +1090,13 @@
 
 	
 		(ghostAt loc_2_15)
-		(pacmanAt loc_31_3)
+		(pacmanAt loc_31_3) ;; Position of opposite pacman
+		
 		
 	)
 
 	(:goal
 		(not (pacmanAt loc_31_3))
-	))
+	)
+
+)

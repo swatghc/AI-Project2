@@ -1,9 +1,11 @@
+﻿;;Scenario&Assumption: In each team, there is a offensive pacman that concentrates on eating dots, and a defensive ghost that never across the middle line. When powered, the pacman will eat the ghost it meet, but not purposely.
+
 (define (domain domain_pacman)
 
 	
 	(:requirements :typing :conditional-effects )
 
-	(:types location)
+	(:types location number)
 
 	(:predicates      
 	            (pacmanAt ?p - location) ;; true iff Pacman at position p
@@ -12,6 +14,7 @@
 				(capsuleAt ?p - location)	;; true iff power capsule at position p
 				(connected ?p1 ?p2);; true iff position1 and position2 are connected
 				(powered ?)	;; true iff the pacman has been powered
+				(successor ?n1 ?n2 -number) ;; timer
 	)
 
 	(:action move
@@ -21,7 +24,7 @@
 								(connected  ?p1 ?p2)
 						   	)
 				:effect (and      
-				            (pacmanAt ?p2)
+				            		(pacmanAt ?p2)
 							(not (pacmanAt ?p1))
 							(not (foodAt ?p2))
 							(when (capsuleAt ?p2) (powered))
